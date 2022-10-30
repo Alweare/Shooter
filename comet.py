@@ -15,9 +15,19 @@ class Comet(pygame.sprite.Sprite):
         self.rect.x = random.randint(20,800)
         self.rect.y = - random.randint(0, 800)
         self.comet_event = comet_event
+        
     
     def remove(self):
         self.comet_event.all_comets.remove(self)
+        
+        #verifier si le nombre de comète est de zero 
+        if len(self.comet_event.all_comets) == 0:
+            # remettre la barre à 0 
+            self.comet_event.reset_percent()
+            #apparaitre a nouveau les deux premier monstre 
+            self.comet_event.game.spawn_monster()
+            self.comet_event.game.spawn_monster()
+           
 
     def fall(self):
         self.rect.y += self.velocity
@@ -27,6 +37,12 @@ class Comet(pygame.sprite.Sprite):
             print('sol')
             # retirer la boule de feu
             self.remove()
+            
+            # s'il n'y a plus de boule de feu sur le jeu
+            if len(self.comet_event.all_comets) == 0:
+                print('event fini')
+                self.comet_event.reset_percent()
+                self.comet_event.fall_mode = False
         
         # verifier si la boule de feu touche le joueur 
         if self.comet_event.game.check_collision( 

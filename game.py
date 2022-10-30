@@ -8,7 +8,7 @@ from comet_event import CometFallEvent
 class Game : 
     def __init__(self):
         # definir si notre jeu ea commencé ou non 
-        self.is_playing = True
+        self.is_playing = False
        #generer notre joueur
         self.all_players = pygame.sprite.Group() 
         self.player = Player(self)
@@ -28,6 +28,8 @@ class Game :
     def game_over(self):
         #remettre le jeu a neuf, retirer les monstres, remettre le joueur a 100 de vie, remettre le jeu en attente
         self.all_monsters = pygame.sprite.Group()
+        self.comet_event.all_comets = pygame.sprite.Group()
+        self.comet_event.reset_percent()
         self.player.health = self.player.max_health
         self.is_playing = False
         
