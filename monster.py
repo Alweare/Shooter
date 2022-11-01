@@ -1,17 +1,18 @@
 from turtle import forward
 import pygame
 import random
+import animation
+
 
 #Créer une classse qui va gérer la notion de monstre sur notre jeu
-class Monster(pygame.sprite.Sprite):
+class Monster(animation.AnimateSprite):
     
     def __init__(self,game):
-        super().__init__()
+        super().__init__("mummy")
         self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 0.3
-        self.image = pygame.image.load('Assets/mummy.png')
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 300)
         self.rect.y = 540
@@ -34,6 +35,9 @@ class Monster(pygame.sprite.Sprite):
                 self.game.all_monsters.remove(self)
                 # appel de la méthode pour essayer de déclencher la pluei de comètes 
                 self.game.comet_event.attempt_fall()
+    
+    def update_animation(self):
+        self.animate()
     
     def update_health_bar(self, surface):
 

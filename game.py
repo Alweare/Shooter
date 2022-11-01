@@ -51,6 +51,7 @@ class Game :
         for monster in self.all_monsters:
             monster.forward()
             monster.update_health_bar(screen)
+            monster.update_animation()
         
         # récupérer les comètes de notre jeu 
         for comet in self.comet_event.all_comets:
