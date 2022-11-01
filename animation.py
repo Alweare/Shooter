@@ -10,22 +10,25 @@ class AnimateSprite(pygame.sprite.Sprite):
         self.image = pygame.image.load(f'Assets/{sprite_name}.png')
         self.current_image = 0 #commencer l'animation a l'image 0
         self.images = animations.get(sprite_name)
+        self.animation = False
+      
+    #définir une méthode pour démarrer l'animation
+    def start_animation(self):
+        self.animation = True
+    def animate(self, loop=False):
+        if self.animation:
+            self.current_image +=1
+            if self.current_image >= len(self.images):
+                self.current_image=0
+                #vérifier si l'animation n'est pas en mode couble
+                if loop is False:
+                #désactivetaion de l'animation
+                    self.animation=False
+            self.image = self.images[self.current_image]
         
-    # définir une méthode pour animer le sprite
-    def animate(self):
-        
-        #passer a l'image suivante
-        self.current_image += 1
-        
-        #vérifier si on a atteint la fin de l'animation
-        
-        if self.current_image >= len(self.images):
-            #remettre l'animation au départ
-            self.current_image = 0
-        
-        #modifier l'image de l'animation précédente par la suivante
-        self.image  = self.images[self.current_image]
+
     
+            
     
     
     
@@ -48,7 +51,8 @@ def load_animation_images(sprite_name):
 # mummy -> [...mummy1.png,...]
 
 animations = {
-	'mummy': load_animation_images('mummy')
+    'mummy': load_animation_images('mummy'),
+    'player': load_animation_images('player')
 }
         
         

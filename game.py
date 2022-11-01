@@ -42,6 +42,9 @@ class Game :
         #actualiser la barre d'événement du jeu
         self.comet_event.update_bar(screen)
         
+        #actualiser l'animation du joueur
+        self.player.update_animation()
+        
         
         # recuperer les projectiles du joueur
         for projectile in self.player.all_projectiles:
