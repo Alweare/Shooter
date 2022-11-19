@@ -22,7 +22,7 @@ class AnimateSprite(pygame.sprite.Sprite):
                 self.current_image=0
                 #vérifier si l'animation n'est pas en mode couble
                 if loop is False:
-                #désactivetaion de l'animation
+                #désactivation de l'animation
                     self.animation=False
             self.image = self.images[self.current_image]
         
@@ -52,7 +52,8 @@ def load_animation_images(sprite_name):
 
 animations = {
     'mummy': load_animation_images('mummy'),
-    'player': load_animation_images('player')
+    'player': load_animation_images('player'),
+    'alien': load_animation_images('alien')
 }
         
         

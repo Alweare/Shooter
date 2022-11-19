@@ -7,8 +7,8 @@ import animation
 #Créer une classse qui va gérer la notion de monstre sur notre jeu
 class Monster(animation.AnimateSprite):
     
-    def __init__(self,game):
-        super().__init__("mummy")
+    def __init__(self,game, name):
+        super().__init__(name)
         self.game = game
         self.health = 100
         self.max_health = 100
@@ -57,7 +57,17 @@ class Monster(animation.AnimateSprite):
         else:
             #infliger des dégâts (au joueur)
             self.game.player.damage(self.attack)
-        
+            
+# définir une classe pour la momie 
+class Mummy(Monster):
+    def __init__(self, game):
+        super().__init__(game, "mummy")
+
+ 
+#définir une classe pour l'alien
+class Alien(Monster):
+    def __init__(self, game):
+        super().__init__(game, "alien")
         
         
         
