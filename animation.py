@@ -5,9 +5,11 @@ import pygame
 class AnimateSprite(pygame.sprite.Sprite):
     
     #définir les choses a faire a la création de l'entité
-    def __init__(self, sprite_name):
+    def __init__(self, sprite_name, size=(200,200)):
         super().__init__()
+        self.size = size
         self.image = pygame.image.load(f'Assets/{sprite_name}.png')
+        self.image = pygame.transform.scale(self.image, size)
         self.current_image = 0 #commencer l'animation a l'image 0
         self.images = animations.get(sprite_name)
         self.animation = False
@@ -25,7 +27,7 @@ class AnimateSprite(pygame.sprite.Sprite):
                 #désactivation de l'animation
                     self.animation=False
             self.image = self.images[self.current_image]
-        
+            self.image = pygame.transform.scale(self.image, self.size)
 
     
             
