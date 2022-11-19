@@ -33,20 +33,17 @@ class Comet(pygame.sprite.Sprite):
         
         # ne tombe pas sur le sol
         if self.rect.y >= 500:
-            print('sol')
             # retirer la boule de feu
             self.remove()
             
             # s'il n'y a plus de boule de feu sur le jeu
             if len(self.comet_event.all_comets) == 0:
-                print('event fini')
                 self.comet_event.reset_percent()
                 self.comet_event.fall_mode = False
         
         # verifier si la boule de feu touche le joueur 
         if self.comet_event.game.check_collision( 
         	self,self.comet_event.game.all_players):
-            print('joueur touché')
             # retirer la boule de feu
             self.remove()
             #subir 20 point de dégats
