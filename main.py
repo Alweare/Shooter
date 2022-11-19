@@ -7,7 +7,9 @@ pygame.init()
 from player import Player
 from game import Game
 
-       
+#définir une clock
+clock = pygame.time.Clock()
+FPS = 60
 
 #générer une fenêtre au jeu
 
@@ -78,6 +80,7 @@ while running:
             if play_button_rect.collidepoint(event.pos):
                 # mettre le jeu en mode 'lancé' 
                 game.start()
-            
+#fixer le nombre de fps sur ma clock
+    clock.tick(FPS)           
     
             
