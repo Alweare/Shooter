@@ -30,6 +30,9 @@ class Game :
         self.spawn_monster(Mummy)
         self.spawn_monster(Alien)
         
+    def add_score(self, points):
+        self.score += 10
+           
     def game_over(self):
         #remettre le jeu a neuf, retirer les monstres, remettre le joueur a 100 de vie, remettre le jeu en attente
         self.all_monsters = pygame.sprite.Group()
